@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
   }
 
   function login(email, password) {
-    return auth.signInWidthEmailAndPassword(email, password);
+    return auth.signInWithEmailAndPassword(email, password);
   }
 
   useEffect(() => {
