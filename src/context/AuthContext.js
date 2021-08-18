@@ -12,7 +12,11 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   function signup(email, password) {
-    auth.createUserWithEmailAndPassword(email, password);
+    return auth.createUserWithEmailAndPassword(email, password);
+  }
+
+  function login(email, password) {
+    return auth.signInWidthEmailAndPassword(email, password);
   }
 
   useEffect(() => {
@@ -27,7 +31,7 @@ export function AuthProvider({ children }) {
     setCurrentUser(user);
   });
 
-  const value = { currentUser, signup };
+  const value = { currentUser, signup, login };
 
   return (
     <AuthContext.Provider value={value}>
