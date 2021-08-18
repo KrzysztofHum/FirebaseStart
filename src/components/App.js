@@ -1,5 +1,8 @@
 import { Container } from "react-bootstrap";
+import { AuthProvider } from "../context/AuthContext";
 import Signup from "./Signup";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Dashboard from "./Dashboard";
 
 function App() {
   return (
@@ -8,7 +11,14 @@ function App() {
       style={{ minHeight: "100vh" }}
     >
       <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Signup />
+        <Router>
+          <AuthProvider>
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route path="/signup" component={Signup} />
+            </Switch>
+          </AuthProvider>
+        </Router>
       </div>
     </Container>
   );
